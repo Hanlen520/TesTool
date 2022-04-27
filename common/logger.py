@@ -14,8 +14,7 @@ class Logger():
         self.logger = logging.getLogger("log")
         self.logger.setLevel(logging.DEBUG)
 
-        self.formater = logging.Formatter(
-            '[%(asctime)s][%(filename)s %(lineno)d][%(levelname)s]: %(message)s')
+        self.formater = logging.Formatter('[%(asctime)s][%(filename)s %(lineno)d][%(levelname)s]: %(message)s')
 
         self.filelogger = logging.FileHandler(self.logname, mode='a', encoding="UTF-8")
         self.console = logging.StreamHandler()
