@@ -1,5 +1,5 @@
 import os
-from core.rest_client import RestClient
+from core.http_client import HttpClient
 from common.read_data import DataLoader
 
 loader = DataLoader()
@@ -8,7 +8,7 @@ data_file_path = os.path.join(BASE_PATH, "config", "setting.ini")
 api_root_url = loader.load_ini(data_file_path)["host"]["api_root_url"]
 
 
-class User(RestClient):
+class User(HttpClient):
 
     def __init__(self, api_root_url, **kwargs):
         super(User, self).__init__(api_root_url, **kwargs)
@@ -23,7 +23,7 @@ class User(RestClient):
         return self.post("/register", **kwargs)
 
     def login(self, **kwargs):
-        return self.post("/login", **kwargs)
+        return self.post("/login/", **kwargs)
 
     def update(self, user_id, **kwargs):
         return self.put("/update/user/{}".format(user_id), **kwargs)

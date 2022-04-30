@@ -1,9 +1,9 @@
 import os
 
-from core.rest_client import RestClient
+from core.http_client import HttpClient
 
 
-class Manage(RestClient):
+class Manage(HttpClient):
     
     def __init__(self, ):
         super(Manage, self).__init__()

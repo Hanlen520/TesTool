@@ -6,7 +6,7 @@ from common.logger import logger
 class HttpClient(object):
 
     def __init__(self, root_url: str):
-        self.root_url = root_url if root_url.endswith('/') else root_url + "/"
+        self.root_url = root_url #  if root_url.endswith('/') else root_url + "/"
         self.session = requests.session()
 
     def get(self, url, **kwargs):

@@ -1,3 +1,5 @@
+import json
+
 from core.result_base import ResultBase
 from api.user import user
 from common.logger import logger
@@ -82,16 +84,18 @@ def login_user(username, password):
     result = ResultBase()
     payload = {
         "username": username,
-        "password": password
+        "password": password,
+        "captcha": 'zczc'
     }
-    header = {
-        "Content-Type": "application/x-www-form-urlencoded"
+    headers = {
+        "Content-Type": "application/json"
     }
-    res = user.login(data=payload, headers=header)
+
+    res = user.login(json=payload, headers=headers)
     result.success = False
     if res.json()["code"] == 0:
         result.success = True
-        result.token = res.json()["login_info"]["token"]
+        # result.token = res.json()["login_info"]["token"]
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["msg"])
     result.msg = res.json()["msg"]
