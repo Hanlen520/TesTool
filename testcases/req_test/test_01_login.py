@@ -8,7 +8,11 @@ from common.logger import logger
 @allure.step("步骤1 ==>> 登录用户")
 def step_1(username):
     logger.info("步骤1 ==>> 登录用户：{}".format(username))
-    print(api_data)
+
+
+@allure.step("步骤2 ==>> 登录返回")
+def step_2(message):
+    logger.info("步骤1 ==>> 返回消息：{}".format(message))
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -22,11 +26,13 @@ class TestUserLogin:
     @allure.testcase("https://www.cnblogs.com/wintest", name="点击，跳转到对应用例的链接地址")
     @allure.title("测试数据：【 {username}，{password}】")
     @pytest.mark.single
-    @pytest.mark.parametrize("username, password", api_data[1:])
-    def test_login_user(self, username, password):
+    @pytest.mark.parametrize("username, password, usertype, expect_code", api_data[1:])
+    def test_login_user(self, username, password, usertype, expect_code):
         logger.info("*************** 开始执行用例 ***************")
-        result = login_user(username, password)
         step_1(username)
+        result = login_user(username, password, usertype)
+        step_2(result.msg)
+        assert result.code == int(expect_code)
         # assert result.success == except_result, result.error
         assert result.response.status_code == 200
         # assert result.success == except_result, result.error

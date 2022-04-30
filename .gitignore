@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 report/
+.pytest_cache/
+allure-report/

@@ -74,7 +74,7 @@ def register_user(username, password, telephone, sex="", address=""):
     return result
 
 
-def login_user(username, password):
+def login_user(username, password, usertype):
     """
     登录用户
     :param username: 用户名
@@ -85,15 +85,17 @@ def login_user(username, password):
     payload = {
         "username": username,
         "password": password,
+        "usertype": usertype,
         "captcha": 'zczc'
     }
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
     }
 
     res = user.login(json=payload, headers=headers)
     result.success = False
-    if res.json()["code"] == 0:
+    result.code = res.json()["code"]
+    if res.json()["code"] == 1:
         result.success = True
         # result.token = res.json()["login_info"]["token"]
     else:
