@@ -1,0 +1,4 @@
+username,password,email,expect_code
+zc,19980526,zhouchen_official@163.com,1
+zy,12345678,zhouchen_official@163.com,1004
+1,123456,zc@qq.com,1

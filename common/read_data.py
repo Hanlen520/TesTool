@@ -17,7 +17,7 @@ class MyConfigParser(ConfigParser):
         return optionstr
 
 
-class DataLoader():
+class DataLoader(object):
 
     def __init__(self):
         pass
@@ -48,7 +48,7 @@ class DataLoader():
         return data
 
     @staticmethod
-    def load_csv(file_path: str, header=True) -> List:
+    def load_csv(file_path: str, header=False) -> List:
         mylist = []
         with open(file_path, 'r', encoding='utf8') as f:
             data = csv.reader(f)

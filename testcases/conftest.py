@@ -24,7 +24,9 @@ def get_data(file_name):
 
 
 base_data = get_data("base_data.yml")
-api_data = get_data("data.csv")
+api_data = {}
+api_data['login'] = get_data("user_login.csv")
+api_data['register'] = get_data("user_register.csv")
 scenario_data = get_data("scenario_test_data.yml")
 
 

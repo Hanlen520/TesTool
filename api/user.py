@@ -20,7 +20,7 @@ class User(HttpClient):
         return self.get("/users/{}".format(username), **kwargs)
 
     def register(self, **kwargs):
-        return self.post("/register", **kwargs)
+        return self.post("/register/", **kwargs)
 
     def login(self, **kwargs):
         return self.post("/login/", **kwargs)
@@ -28,8 +28,10 @@ class User(HttpClient):
     def update(self, user_id, **kwargs):
         return self.put("/update/user/{}".format(user_id), **kwargs)
 
-    def delete(self, name, **kwargs):
-        return self.post("/delete/user/{}".format(name), **kwargs)
+    def delete(self, **kwargs):
+        return self.post("/delete/user/", **kwargs)
 
 
 user = User(api_root_url)
+# rsp = user.delete(json={'username': 1, 'usertype': 'user'})
+# print(rsp)

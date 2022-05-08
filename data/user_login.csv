@@ -1,0 +1,10 @@
+username,password,usertype,expect_code
+1,123456,user,1
+2,123456,user,1
+zc,1234,user,1001
+4,1245555,user,1002
+1,123,manager,1
+2,123456,manager,1002
+zc,1234,manager,1001
+4,1245555,manager,1001
+admin' or '1' ='1,123,user,1001

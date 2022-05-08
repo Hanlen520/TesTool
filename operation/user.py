@@ -1,5 +1,3 @@
-import json
-
 from core.result_base import ResultBase
 from api.user import user
 from common.logger import logger
@@ -41,30 +39,27 @@ def get_one_user_info(username):
     return result
 
 
-def register_user(username, password, telephone, sex="", address=""):
+def register_user(username, password, email):
     """
     注册用户信息
     :param username: 用户名
     :param password: 密码
-    :param telephone: 手机号
-    :param sex: 性别
-    :param address: 联系地址
+    :param email: 邮箱
+
     :return: 自定义的关键字返回结果 result
     """
     result = ResultBase()
     json_data = {
         "username": username,
         "password": password,
-        "sex": sex,
-        "telephone": telephone,
-        "address": address
+        "email": email
     }
     header = {
         "Content-Type": "application/json"
     }
     res = user.register(json=json_data, headers=header)
     result.success = False
-    if res.json()["code"] == 0:
+    if res.json()["code"] == 1:
         result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["msg"])
@@ -86,7 +81,7 @@ def login_user(username, password, usertype):
         "username": username,
         "password": password,
         "usertype": usertype,
-        "captcha": 'zczc'
+        "captcha_1": 'zczc'
     }
     headers = {
         "Content-Type": "application/x-www-form-urlencoded"
