@@ -51,4 +51,4 @@ class TestUserLogin:
 
 
 if __name__ == '__main__':
-    pytest.main(["-q", "-s", "test_01_login.py"])
+    pytest.main(["-q", "-s", "test_01_user_login.py"])

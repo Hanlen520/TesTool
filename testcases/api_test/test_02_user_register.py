@@ -43,4 +43,4 @@ class TestUserRegister():
 
 
 if __name__ == '__main__':
-    pytest.main(["-q", "-s", "test_02_register.py"])
+    pytest.main(["-q", "-s", "test_02_user_register.py"])
