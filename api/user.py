@@ -16,8 +16,8 @@ class User(HttpClient):
     def list_all_users(self, **kwargs):
         return self.get("/users", **kwargs)
 
-    def list_one_user(self, username, **kwargs):
-        return self.get("/users/{}".format(username), **kwargs)
+    def list_one_user(self, **kwargs):
+        return self.post("/about/", **kwargs)
 
     def register(self, **kwargs):
         return self.post("/register/", **kwargs)

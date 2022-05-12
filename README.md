@@ -10,6 +10,7 @@
 pip install -r requirements.txt
 ```
 
+
 ## 目录结构
 
 - api ==> 接口封装层，如封装HTTP接口
@@ -25,9 +26,22 @@ pip install -r requirements.txt
 
 ## 测试数据
 
-本框架采用CSV来存放测试数据，为了适配自定义的csv解析器，请务必对测试数据携带表头。
+**针对API测试：**
 
+采用CSV来存放测试数据，为了适配自定义的csv解析器，请务必对测试数据携带表头。
 
-## 感谢贡献
+**针对场景测试：**
+
+采用YAML来存放数据，这是为了适配不同业务之间全局变量的存储。
+
+## 后处理
+
+集成Jenkins会自动生成测试报告，但是本地需要自己使用命令去生成。
+
+```shell
+allure generate ./report --clean
+```
+
+## 感谢
 
 [wintests-pytestDemo](https://github.com/wintests/pytestDemo)

@@ -1,0 +1,3 @@
+username,password,usertype,expect_code,expect_msg
+2,123456,user,1,用户信息查询成功
+1,123456,user,2001,用户不存在

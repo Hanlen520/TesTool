@@ -14,7 +14,7 @@ def get_data(file_name):
         loader = DataLoader()
         file_path = os.path.join(BASE_PATH, "data", file_name)
         if file_name.endswith("yml"):
-            data = loader.load_csv(file_path)
+            data = loader.load_yaml(file_path)
         elif file_name.endswith("csv"):
             data = loader.load_csv(file_path)
     except Exception as ex:
@@ -25,8 +25,9 @@ def get_data(file_name):
 
 base_data = get_data("base_data.yml")
 api_data = {}
-api_data['login'] = get_data("user_login.csv")
-api_data['register'] = get_data("user_register.csv")
+api_data['test_user_login'] = get_data("test_user_login.csv")
+api_data['test_user_register'] = get_data("test_user_register.csv")
+api_data['test_user_info'] = get_data("test_user_info.csv")
 scenario_data = get_data("scenario_test_data.yml")
 
 

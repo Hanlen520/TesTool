@@ -20,20 +20,27 @@ def get_all_user_info():
     return result
 
 
-def get_one_user_info(username):
+def get_one_user_info(cookie):
     """
     获取单个用户信息
-    :param username:  用户名
+    :param cookie:  登录的cookie
     :return: 自定义的关键字返回结果 result
     """
     result = ResultBase()
-    res = user.list_one_user(username)
+    json_data = {
+
+    }
+    header = {
+        "Content-Type": "application/json"
+    }
+    res = user.list_one_user(json=json_data, headers=header, cookies=cookie)
     result.success = False
-    if res.json()["code"] == 0:
+    if res.json()["code"] == 1:
         result.success = True
     else:
         result.error = "查询用户 ==>> 接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["msg"])
     result.msg = res.json()["msg"]
+    result.json = res.json()
     result.response = res
     logger.info("查看单个用户 ==>> 返回结果 ==>> {}".format(result.response.text))
     return result
@@ -74,6 +81,7 @@ def login_user(username, password, usertype):
     登录用户
     :param username: 用户名
     :param password: 密码
+    :param usertype: 用户类型
     :return: 自定义的关键字返回结果 result
     """
     result = ResultBase()
@@ -95,7 +103,7 @@ def login_user(username, password, usertype):
         # result.token = res.json()["login_info"]["token"]
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["msg"])
-    result.msg = res.json()["msg"]
+    result.msg = res.json()["msg"].encode("utf8").decode("unicode_escape")
     result.response = res
     logger.info("登录用户 ==>> 返回结果 ==>> {}".format(result.response.text))
     return result
