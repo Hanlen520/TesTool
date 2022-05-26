@@ -16,7 +16,8 @@ pipeline {
     }
     post {
         always {
-            script{// 集成allure，目录需要和保存的results保持一致，注意此处目录为job工作目录之后的目录，Jenkins会自动将根目录与path进行拼接
+            script{ /* 集成allure，目录需要和保存的results保持一致，注意此处目录为job工作目录之后的目录，Jenkins会自动将根目录与path进行拼接*/
+
                     allure includeProperties: false, jdk: '', report: 'allure-report', results: [[path: 'report']]
                 }
             emailext(
