@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('pull code') {
             steps {
@@ -10,17 +9,14 @@ pipeline {
         stage('build project') {
             steps {
                 sh 'pytest'
-
             }
         }
-
     }
     post {
         always {
-            script{
+            script {
                 allure includeProperties: false, jdk: 'jdk1.8', report: 'allure-report', results: [[path: 'report']]
             }
-
             emailext(
                 subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
                 body: '${FILE,path="email.html"}',
