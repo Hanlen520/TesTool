@@ -33,7 +33,7 @@ class TestUserLogin:
     @allure.testcase("https://www.cnblogs.com/wintest", name="点击，跳转到对应用例的链接地址")
     @allure.title("测试数据：【 {username}，{password}】")
     @pytest.mark.single
-    @pytest.mark.parametrize("username, password, usertype, expect_code", api_data['login'])
+    @pytest.mark.parametrize("username, password, usertype, expect_code", api_data['test_user_login'])
     def test_login_user(self, username, password, usertype, expect_code):
         logger.info("*************** 开始执行用例 ***************")
         step_1(username)

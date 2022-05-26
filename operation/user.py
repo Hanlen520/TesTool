@@ -103,7 +103,7 @@ def login_user(username, password, usertype):
         # result.token = res.json()["login_info"]["token"]
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["msg"])
-    result.msg = res.json()["msg"].encode("utf8").decode("unicode_escape")
+    result.msg = res.json()["msg"]
     result.response = res
     logger.info("登录用户 ==>> 返回结果 ==>> {}".format(result.response.text))
     return result

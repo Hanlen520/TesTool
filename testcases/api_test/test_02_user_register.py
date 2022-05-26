@@ -27,7 +27,7 @@ class TestUserRegister():
     @allure.testcase("https://www.cnblogs.com/wintest", name="点击，跳转到对应用例的链接地址")
     @allure.title("测试数据：【 {username}，{password}，{email} 】")
     @pytest.mark.single
-    @pytest.mark.parametrize("username, password, email, expect_code", api_data['register'])
+    @pytest.mark.parametrize("username, password, email, expect_code", api_data['test_user_register'])
     # @pytest.mark.usefixtures("delete_register_user")
     def test_register_user(self, username, password, email, expect_code):
         logger.info("*************** 开始执行用例 ***************")
