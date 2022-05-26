@@ -11,13 +11,17 @@ pipeline {
             steps {
                 sh 'pytest'
                 //集成allure，目录需要和保存的results保持一致，注意此处目录为job工作目录之后的目录，Jenkins会自动将根目录与path进行拼接
-                allure includeProperties: false, jdk: 'jdk1.8', report: 'allure-report', results: [[path: 'report']]
+
             }
         }
 
     }
     post {
         always {
+            script{
+                allure includeProperties: false, jdk: 'jdk1.8', report: 'allure-report', results: [[path: 'report']]
+            }
+
             emailext(
                 subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
                 body: '${FILE,path="email.html"}',
