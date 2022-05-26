@@ -20,8 +20,12 @@ pip install -r requirements.txt
 - data ==> 数据驱动，测试数据管理
 - log ==> 日志记录文件
 - operation ==> 关键字封装层，把多个Python接口封装为关键字
+- templates ==> 用于测试报告的HTML模板
 - testcases ==> 测试用例
+- Jenkinsfile ==> Jenkins流水线脚本
 - pytest.ini ==> pytest配置文件
+- README.md ==> 本项目的说明文档
+- requirements.txt ==> Python依赖包
 
 
 ## 测试数据
@@ -36,7 +40,7 @@ pip install -r requirements.txt
 
 ## 后处理
 
-集成Jenkins会自动生成测试报告，但是本地需要自己使用命令去生成。
+集成Jenkins后Allure插件会自动生成测试报告，但是本地使用的话需要自己使用命令去生成。
 
 ```shell
 allure generate ./report --clean
