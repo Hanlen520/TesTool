@@ -1,5 +1,5 @@
 username,password,usertype,expect_code
-1,123456,user,1
+1,123456,user,1001
 2,123456,user,1
 zc,1234,user,1001
 4,1245555,user,1002
