@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull code') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'dd15805e-7fb9-44fc-bf1c-6c4bfea878ce', url: 'git@192.168.195.130:zhouchen_group/web_demo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'dd15805e-7fb9-44fc-bf1c-6c4bfea878ce', url: 'git@192.168.195.130:root/testool.git']]])
             }
         }
         stage('check code') {
@@ -21,14 +21,10 @@ pipeline {
         }
         stage('build project') {
             steps {
-                sh 'mvn clean package'
+                sh 'pytest'
             }
         }
-        stage('public project') {
-            steps {
-                deploy adapters: [tomcat8(credentialsId: '9738b87b-da98-41f5-a333-9d156d6c5a67', path: '', url: 'http://192.168.195.132:8080/')], contextPath: null, war: 'target/*.war'
-            }
-        }
+
     }
     post {
         always {
